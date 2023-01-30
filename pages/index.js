@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [click, setClick] = useState(false)
   return (
     <div className={'p-32'}>
       <Head>
@@ -11,9 +13,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='text-center w-2/'>
-        <p className='text-2xl'>Hola Soy Angela</p>
-        <p className='text-sm'>Hola Soy Angela</p>
-        <button className='rounded-full py-2 px-5 bg-orange-500 hover:bg-red-300 hover:p-10 text-orange-900'>Hola</button>
+        <p className={click ? 'text-2xl' : 'text-4xl'}>Hola Soy Angela este</p>
+        <p className={`text-sm ${click ? 'text-red-700' : '' }`}>Hola Soy Angela</p>
+        <button
+          onClick={()=> setClick(!click)}
+          className={`rounded-full py-2 px-5 bg-orange-500 hover:bg-red-300 hover:p-10 text-orange-900`}
+        >Hola</button>
       </div>
     </div>
 
